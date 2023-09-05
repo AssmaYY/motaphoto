@@ -1,0 +1,92 @@
+/*
+Theme Name: Assmatheme
+Theme URI: https://www.monsite.com/monsite
+Author: [Asma KAABACHI]
+Author URI: https://www.monsite.com/monsite
+Description: [Mon premier thème wordpress personnalisé]
+Version: 1.0
+*/
+body{
+	margin: 0px;
+	padding: 0px;
+    background-color: white;
+}
+
+/* Déclaration des polices */
+
+@font-face {
+	font-family: 'Poppins Light';
+	src: url('assets/fonts/Poppins-Regular.ttf') format('truetype'),
+		 url('assets/fonts/Poppins-Light.ttf') format('truetype'),
+		 url('assets/fonts/Poppins-Medium.ttf') format('truetype');
+	
+}
+
+@font-face {
+	font-family: 'Space Mono';
+	src:  url('assets/fonts/SpaceMono-Regular.ttf') format('truetype'),
+		  url('assets/fonts/SpaceMono-Bold.ttf') format('truetype');
+}
+#site-navigation{
+	display: flex;
+	justify-content: space-around;
+	margin-bottom: 30px;
+	margin-top: 30px;
+}
+
+#menu-menu{
+    font-family: 'Space Mono';
+	display: flex;
+	gap: 50px;
+	margin: 0;
+	padding-left: 0;
+    color: black;
+    margin-left: 282px;
+}
+ul {
+    list-style-type: none;
+}
+a {
+    text-decoration: none;
+    color: black;
+}
+/* MENU DU FOOTER */
+.menu-menu-pied-de-page-container {
+    display: flex;
+	justify-content: space-around;
+	margin-bottom: 30px;
+	margin-top: 30px; 
+    border-top: solid 1px;
+}
+#menu-menu-pied-de-page {
+    font-family: 'Space Mono';
+	display: flex;
+	justify-content: center;
+	gap: 40px;
+	
+	padding-top: 5px;
+}
+
+/*  Modal */
+#modal{
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,0.8);
+}
+
+.modal-contact{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-color: white;
+	border: solid 3px black;
+    width: 37%;
+}
