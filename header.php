@@ -27,4 +27,17 @@
             ]);
         ?>
 		</nav><!-- #site-navigation -->
-	</header><!-- #masthead -->
+	 <!-- Affichage de l'image du header -->
+	 <?php if (is_front_page()) :?>
+        <div class="img-text-header">
+            <img class="text-header" src="<?php echo get_template_directory_uri(); ?>/assets/photos/Titre-header.png" alt="Titre du header">
+            <?php
+                $images = array("nathalie-0.jpeg", "nathalie-1.jpeg", "nathalie-2.jpeg", "nathalie-3.jpeg", "nathalie-4.jpeg", "nathalie-5.jpeg", "nathalie-6.jpeg", "nathalie-7.jpeg", "nathalie-8.jpeg", "nathalie-9.jpeg", "nathalie-10.jpeg", "nathalie-11.jpeg", "nathalie-12.jpeg", "nathalie-13.jpeg", "nathalie-14.jpeg", "nathalie-15.jpeg");
+                $key = array_rand($images);
+                echo '<img class="background-header" src="'. get_template_directory_uri().'/assets/photos/'. $images[$key] . '"> '; ?>
+
+        </div>
+        <?php endif; ?>
+    </header>
+    
+<?php wp_body_open(); ?>

@@ -15,3 +15,16 @@ window.onclick = function(event) {
     }
 }
 
+// RECUPERER REFERENCE FORMULAIRE POST
+
+// Étape 1 : Récupérer l'élément du DOM avec la classe "ref"
+const paragraph = document.querySelector('.ref-contact');
+
+if (paragraph !== null) {
+  // Étape 2 : Récupérer le contenu textuel de l'élément
+  const contenuTextuel = paragraph.textContent;
+  const champRef = document.getElementById('ref');
+
+  champRef.value = contenuTextuel;
+}
+

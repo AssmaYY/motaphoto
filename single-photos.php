@@ -4,7 +4,7 @@
     <?php if (have_posts()) : ?>
         <?php while (have_posts()) : the_post(); ?>
             <article class="galerie-single-post">
-                <!-- Div contenant les informations de la photo -->
+                <!-- info de la photo -->
                 <div class="infos">
                     <h1><?php the_title(); ?></h1>
                     <p><?php echo get_field_object('reference')['label'];?> : 
