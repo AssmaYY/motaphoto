@@ -28,7 +28,7 @@
         ?>
 		</nav><!-- #site-navigation -->
 	 <!-- Affichage de l'image du header -->
-	 <?php if (is_front_page()) :?>
+	
         <div class="img-text-header">
             <img class="text-header" src="<?php echo get_template_directory_uri(); ?>/assets/photos/Titre-header.png" alt="Titre du header">
             <?php
@@ -37,7 +37,7 @@
                 echo '<img class="background-header" src="'. get_template_directory_uri().'/assets/photos/'. $images[$key] . '"> '; ?>
 
         </div>
-        <?php endif; ?>
+        
     </header>
     
 <?php wp_body_open(); ?>

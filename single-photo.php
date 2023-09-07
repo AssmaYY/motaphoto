@@ -7,16 +7,15 @@
                 <!-- info de la photo -->
                 <div class="infos">
                     <h1><?php the_title(); ?></h1>
-                    <p><?php echo get_field_object('reference')['label'];?> : 
-                    <span class="ref-contact"><?php the_field('reference');?></span></p>
-                    <p><?php echo get_field_object('categorie')['label']; ?> :
+                    <p><?php echo get_field_object('réference')['label'];?> : 
+                    <span class="ref-contact"><?php the_field('réference');?></span></p>
+                    <p><?php echo get_field_object('catégories')['label']; ?> :
                     <?php the_field('categorie'); ?></p>
-                    <p><?php echo get_field_object('format')['label']; ?> :
+                    <p><?php echo get_field_object('formats')['label']; ?> :
                     <?php the_field('format'); ?></p>
                     <p><?php echo get_field_object('type')['label']; ?> :
                     <?php the_field('type'); ?></p>
-                    <p><?php echo get_field_object('annee')['label']; ?> :
-                    <?php the_field('annee'); ?></p>
+                    
                 </div>
                 <!-- Div contenant la photo -->
                 <div class="img-post">
@@ -24,20 +23,17 @@
                     <div class="single-similaire">
                         <?php the_post_thumbnail(); ?>
                     </div>
-                    <!-- Div contenant les éléments au survol -->
-                    <div class="single-image-contenu">
-                        <i class="icon-plein-ecran fa-solid fa-expand"></i>
-                    </div>
+                    
                 </div>
             </article>
-            <!-- Div contenant le bouton de contact et la partie next/prev -->
+            <!-- bouton contact et next/prev -->
             <div class="info-next-prev">
                 <div class="info-compl">
                     <p>Cette photo vous intéresse ?</p>
                     <button class="btn btn-contact">Contact</button>
                 </div>
                 <div class="nextandprev">
-    <!-- Div contenant mes deux flèches -->
+    <!-- Div contenant les deux flèches -->
     <div class="arrows">
         <?php
         // Récupère le post précédent et le post suivant
@@ -52,7 +48,7 @@
             // Récupère le lien vers le post précédent
             $prevLink = get_permalink($prevPost);
             ?>
-            <!-- Div contenant ma flèche de gauche -->
+            <!-- Div contenant flèche de gauche -->
             <div class="prev">
                 <a href="<?php echo $prevLink; ?>">
                     <i class="fas fa-arrow-left"></i>
@@ -61,7 +57,7 @@
 
         <!-- Si aucun post précédent n'existe -->
         <?php } else { ?>
-            <!-- Affiche une flèche gauche (désactivée ou avec un comportement différent) -->
+            <!-- Affiche une flèche gauche -->
             <i class="fas fa-arrow-left"></i>
         <?php } ?>
 
@@ -103,8 +99,8 @@
                     // 1. On définit les arguments pour définir ce que l'on souhaite récupérer
                     $args = array(
                     'post_type' => 'any',
-                    'meta_key' => 'categorie',
-                    'meta_value' => get_field('categorie'), 
+                    'meta_key' => 'catégories',
+                    'meta_value' => get_field('catégories'), 
                     'posts_per_page' => 2,
                     'paged' => 1,
                     'post__not_in'   => array( get_the_ID() ),
@@ -121,22 +117,18 @@
                             <div class="single-similaire">
                                 <a class="" href="<?php the_permalink(); ?>"><?php the_post_thumbnail(); ?></a>
                             </div>
-                            <!-- Div contenant les éléments au survol -->
-                            <div class="image-contenu">
-                                <i class="icon-plein-ecran fa-solid fa-expand"></i>
-                                <a class="" href="<?php the_permalink(); ?>"><i class="icon-oeil fa-regular fa-eye"></a></i>
-                            </div>
+                          
                         </div>
 
                     <?php endwhile;
                     endif;
 
-                    // 4. On réinitialise à la requête principale (important)
+                    // 4. réinitialisation à la requête principale 
                     wp_reset_postdata(); ?>
                 </div>
                 
                 <div class="plus-photo">
-                    <a href="<?php echo home_url( '/#home-filtre' ); ?>"><button class="btn btn-photo">Toutes les photos</button></a>
+                    <a href="<?php echo home_url( '#' ); ?>"><button class="btn btn-photo">Toutes les photos</button></a>
                 </div>
             </div>
         <?php endwhile; ?>
