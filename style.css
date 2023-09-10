@@ -98,7 +98,7 @@ a {
 }
 
 .infos{
-	width: 50%;
+	/* width: 50%; */
 	display: flex;
 	flex-direction: column;
 	justify-content: end;
@@ -143,9 +143,10 @@ a {
 
 .img-post img{
 	object-fit: contain;
-	width: 100%;
+	width: 75%;
 	display: flex;
 	height: auto;
+    margin-left: 320px;
 }
 
 .info-next-prev{
@@ -190,7 +191,7 @@ a {
 }
 
 .img-arrow img{
-	opacity: 0;
+	/* opacity: 0; */
     visibility: hidden;
     transition: opacity 0.3s ease, visibility 0.3s ease;
 	object-fit: contain;
@@ -244,6 +245,18 @@ a {
 	margin-top: 50px;
 	margin-bottom: 50px;
 }
+
+/* CHAMP REFERENCE */
+#acf-champ-reference{
+	font-family: 'Space Mono';
+	text-transform: uppercase;
+	color: white;
+	position: absolute;
+	bottom: 0;
+	left: 15px;
+}
+
+/* HEADER */
 .img-text-header{
 	max-height: 960px;
 	overflow: hidden;
@@ -259,3 +272,232 @@ a {
 	left: calc(47% - 500px);
 	top: 550px;
 }
+/* FILTRE */
+
+.filtre{
+	display: flex;
+	margin-left: 200px;
+	margin-right: 200px;
+	margin-top: 70px;
+}
+
+select{
+	width: 260px;
+	height: 43px;
+	background-color: white;
+	border: solid 1px #C9CCD1;
+	border-radius: 10px;
+	text-transform: uppercase;
+	font-family: "space mono";
+}
+
+.filter-formats{
+	display: flex;
+	justify-content: end;
+	flex-direction: column;
+}
+
+.filtre-cat-form{
+	width: 50%;
+	display: flex;
+	justify-content: space-between;
+}
+
+.filtre-dates{
+	display: flex;
+	justify-content: end;
+	width: 50%;
+}
+
+.filter-date{
+	width: 50%;
+	display: flex;
+	justify-content: end;
+}
+
+#categorie option:hover{
+	background-color: #E00000;
+}
+
+/* GALERIE */
+
+.galerie{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 10px;
+	margin-top: 40px;
+}
+
+.img-galerie img{
+	object-fit: cover;
+	width: 100%;
+	height: 495px;
+}
+
+.image-galerie{
+	position: absolute;
+	width: 564px;
+	height: 495px;
+}
+
+.galerie-post:hover .image-contenu{
+	background: rgba(0,0,0,0.5);
+	display: block;
+}
+
+.image-contenu{
+	position: absolute;
+	width: 564px;
+	height: 495px;
+	display: flex;
+	flex-direction: column;
+	display: none;
+}
+
+.contenu-ref{
+	font-family: 'Space Mono';
+	text-transform: uppercase;
+	color: white;
+	position: absolute;
+	bottom: 0;
+	left: 15px;
+}
+
+.contenu-categorie{
+	font-family: 'Space Mono';
+	text-transform: uppercase;
+	color: white;
+	position: absolute;
+	bottom: 0;
+	right: 15px;
+}
+
+.icon-plein-ecran{
+	color: white;
+	position: absolute;
+	right: 15px;
+	top: 10px;
+	cursor: pointer;
+}
+
+.icon-plein-ecran::before{
+	font-size: 30px;
+}
+
+.icon-oeil{
+	color: white;
+	position: absolute;
+	left: 260px;
+	bottom: 220px;
+	cursor: pointer;
+}
+
+.icon-oeil::before{
+	font-size: 30px;
+}
+
+article{
+	overflow: hidden;
+	width: 564px;
+	height: 495px;
+}
+
+/* LIGHTBOX */
+
+#lightbox{
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	background: rgba(0,0,0,0.8);
+	background-size: contain;
+	background-position: center;
+}
+
+.lightbox-img{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-left: 50px;
+	margin-right: 50px;
+	min-height: 100vh;
+}
+
+.lightbox-img img{
+	max-width: 800px;
+	max-height: 600px;
+	object-fit: contain;
+}
+
+.lightbox-next,
+.lightbox-prev{
+	background-color: transparent;
+	color: white;
+	border: none;
+	position: fixed;
+	top: 50%;
+	cursor: pointer;
+	font-family: "space mono";
+}
+
+.lightbox-next{
+	left: auto;
+	right: 150px;
+}
+
+.lightbox-prev{
+	left: 150px;
+	right: auto;
+}
+
+.lightbox-close{
+    color: white;
+    font-size: 2em;
+    position: fixed;
+    top: 40px;
+    right: 40px;
+    cursor: pointer;
+}
+
+.lightbox-info{
+	position: absolute;
+	bottom: 50px;
+	right: 367px;
+	left: 367px;
+	display: flex;
+	justify-content: space-between;
+
+}
+
+.lightbox-ref,
+.lightbox-categorie{
+	color: white;
+	font-family: "space mono";
+	text-transform: uppercase;
+	text-shadow: 1px 1px 3px #0D0D0D;
+}
+
+/* PAGINATION INFINI */
+
+.btn{
+	background-color: #D8D8D8;
+	width: 300px;
+	height: 50px;
+	font-family: 'space mono';
+	border: none;
+	cursor: pointer;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.charger-plus{
+	display: flex;
+	justify-content: center;
+	margin-top: 50px;
+	margin-bottom: 50px;
+}
+

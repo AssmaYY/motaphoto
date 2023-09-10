@@ -7,12 +7,14 @@
                 <!-- info de la photo -->
                 <div class="infos">
                     <h1><?php the_title(); ?></h1>
-                    <p><?php echo get_field_object('réference')['label'];?> : 
-                    <span class="ref-contact"><?php the_field('réference');?></span></p>
-                    <p><?php echo get_field_object('catégories')['label']; ?> :
-                    <?php the_field('categorie'); ?></p>
-                    <p><?php echo get_field_object('formats')['label']; ?> :
-                    <?php the_field('format'); ?></p>
+                    <p><?php echo get_taxonomy('categorie')->labels->name; ?> :
+                    <?php echo get_the_term_list(get_the_ID(), 'categorie', '', ', '); ?></p>
+    <p><?php echo get_taxonomy('format')->labels->name; ?> :
+        <?php echo get_the_term_list(get_the_ID(), 'format', '', ', '); ?></p>
+        <p><?php echo get_field_object('reference')['label']; ?> :
+                    <?php the_field('reference'); ?></p>
+ 
+                   
                     <p><?php echo get_field_object('type')['label']; ?> :
                     <?php the_field('type'); ?></p>
                     
@@ -93,42 +95,34 @@
             </div>
             <!-- Div contenant les photos similaires -->
             <div class="info-similaire">
-                <p>Vous aimerez aussi</p>
-                <div class="img-article-similaire">
-                    <?php 
-                    // 1. On définit les arguments pour définir ce que l'on souhaite récupérer
-                    $args = array(
-                    'post_type' => 'any',
-                    'meta_key' => 'catégories',
-                    'meta_value' => get_field('catégories'), 
-                    'posts_per_page' => 2,
-                    'paged' => 1,
-                    'post__not_in'   => array( get_the_ID() ),
-                    );
+    <p>Vous aimerez aussi</p>
+    <div class="img-article-similaire">
+        <?php 
+        $args = array(
+            'post_type' => 'photo',
+            'posts_per_page' => 2,
+            'post__not_in'   => array( get_the_ID() ),
+        );
 
-                    // 2. On exécute la WP Query
-                    $my_query = new WP_Query( $args );
+        $my_query = new WP_Query( $args );
 
-                    // 3. On lance la boucle !
-                    if( $my_query->have_posts() ) : while( $my_query->have_posts() ) : $my_query->the_post(); ?>
-
-                        <div class="single-post">
-                            <!-- Div contenant mon image -->
-                            <div class="single-similaire">
-                                <a class="" href="<?php the_permalink(); ?>"><?php the_post_thumbnail(); ?></a>
-                            </div>
-                          
-                        </div>
-
-                    <?php endwhile;
-                    endif;
-
-                    // 4. réinitialisation à la requête principale 
-                    wp_reset_postdata(); ?>
+        if( $my_query->have_posts() ) : while( $my_query->have_posts() ) : $my_query->the_post(); ?>
+            <div class="single-post">
+                <div class="single-similaire">
+                    <a class="" href="<?php the_permalink(); ?>"><?php the_post_thumbnail(); ?></a>
                 </div>
-                
-                <div class="plus-photo">
-                    <a href="<?php echo home_url( '#' ); ?>"><button class="btn btn-photo">Toutes les photos</button></a>
+                <div class="image-contenu">
+                    <i class="icon-plein-ecran fa-solid fa-expand"></i>
+                    <a class="" href="<?php the_permalink(); ?>"><i class="icon-oeil fa-regular fa-eye"></i></a>
+                </div>
+            </div>
+        <?php endwhile;
+        endif;
+
+        wp_reset_postdata();?>
+    </div>
+    <div class="plus-photo">
+                    <a href="<?php echo home_url( '/#home-filtre' ); ?>"><button class="btn btn-photo">Toutes les photos</button></a>
                 </div>
             </div>
         <?php endwhile; ?>

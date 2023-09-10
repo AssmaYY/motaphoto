@@ -3,6 +3,8 @@
 <head>
     <meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- Lien bibliothèque font awesome -->
+    <script src="https://kit.fontawesome.com/61f1f173b3.js" crossorigin="anonymous"></script>
     <title>Motaphoto</title>
     <?php wp_head() ?>
 </head>
@@ -28,6 +30,7 @@
         ?>
 		</nav><!-- #site-navigation -->
 	 <!-- Affichage de l'image du header -->
+	 <?php if (is_front_page()) :?>
 	
         <div class="img-text-header">
             <img class="text-header" src="<?php echo get_template_directory_uri(); ?>/assets/photos/Titre-header.png" alt="Titre du header">
@@ -37,6 +40,7 @@
                 echo '<img class="background-header" src="'. get_template_directory_uri().'/assets/photos/'. $images[$key] . '"> '; ?>
 
         </div>
+		<?php endif; ?>
         
     </header>
     
