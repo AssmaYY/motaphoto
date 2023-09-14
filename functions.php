@@ -12,6 +12,7 @@ function motaphoto_scripts()
     
   // Déclarer le JS
   wp_enqueue_script('script', get_template_directory_uri() . '/assets/JS/script.js', array( 'jquery' ), '1.0', true);
+  wp_enqueue_script('lightbox', get_template_directory_uri() . '/assets/JS/lightbox.js', array( 'jquery' ), '1.0', true);
 
 }
 add_action('wp_enqueue_scripts', 'motaphoto_scripts');
@@ -43,8 +44,11 @@ add_theme_support( 'title-tag' );
     if($ajaxposts->have_posts()) {
       ob_start();
       while($ajaxposts->have_posts()) : $ajaxposts->the_post();
-      $response .= get_template_part('template-part/content', 'galerie-post');
-      endwhile;
+
+    
+   $response .= get_template_part('template-part/content', 'galerie-post');
+         
+    endwhile;
       $output = ob_get_contents();
       ob_end_clean();
     } 
@@ -167,7 +171,7 @@ function afficherImages($galerie, $exit) {
           <!-- Div contenant les éléments au survol -->
           <div class="image-contenu">
             <i class="icon-plein-ecran fa-solid fa-expand"></i>
-            <a class="" href="<?php the_permalink(); ?>"><i class="icon-oeil fa-regular fa-eye"></a></i>
+            <a class="" href="<?php echo get_post_type_archive_link('photo') ?>"><i class="icon-oeil fa-regular fa-eye"></a></i>
             <p class="contenu-ref"><?php the_field('reference'); ?></p>
             <p class="contenu-categorie"><?php the_field('categorie'); ?></p>
           </div>

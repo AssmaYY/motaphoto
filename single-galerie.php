@@ -113,7 +113,7 @@
                 </div>
                 <div class="image-contenu">
                     <i class="icon-plein-ecran fa-solid fa-expand"></i>
-                    <a class="" href="<?php the_permalink(); ?>"><i class="icon-oeil fa-regular fa-eye"></i></a>
+                    <a href="<?php the_permalink(); ?>"><i class="icon-oeil fa-regular fa-eye"></i></a>
                 </div>
             </div>
         <?php endwhile;

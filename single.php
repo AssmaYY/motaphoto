@@ -16,12 +16,12 @@ get_header();
 		while ( have_posts() ) :
 			the_post();
 
-			get_template_part( 'template-parts/content', get_post_type() );
+			get_template_part( '/templates-parts/content', get_post_type() );
 
 			the_post_navigation(
 				array(
-					'prev_text' => '<span class="nav-subtitle">' . esc_html__( 'Previous:', 'asmatheme' ) . '</span> <span class="nav-title">%title</span>',
-					'next_text' => '<span class="nav-subtitle">' . esc_html__( 'Next:', 'asmatheme' ) . '</span> <span class="nav-title">%title</span>',
+					'prev_text' => '<span class="nav-subtitle">' . esc_html__( 'Previous:', 'assmatheme' ) . '</span> <span class="nav-title">%title</span>',
+					'next_text' => '<span class="nav-subtitle">' . esc_html__( 'Next:', 'assmatheme' ) . '</span> <span class="nav-title">%title</span>',
 				)
 			);
 
