@@ -2,6 +2,7 @@
 
 const modal = document.getElementById("modal");
 const contactMenu = document.getElementById("menu-item-15"); 
+const contactPost = document.querySelector(".btn-contact");
 
 
 contactMenu.onclick = function(event){
@@ -13,6 +14,11 @@ window.onclick = function(event) {
     if (event.target == modal) {
         modal.style.display = "none";
     }
+if (contactPost !== null) {
+        contactPost.onclick = function(){
+          modal.style.display = 'block';
+        }
+      }
 }
 
 // RECUPERER REFERENCE FORMULAIRE POST
@@ -84,6 +90,7 @@ jQuery('#btn-charger-plus').on('click', function() {
   });
 });
 
+
 // FILTRES
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -101,7 +108,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // Fonction pour effectuer une requête AJAX et mettre à jour la galerie de photos
   function ajaxRequest(chargerPlus) {
 
-    // Sélectionne l'élément avec l'ID 'categories'
+    // Sélectionne l'élément avec l'ID 'categorie'
     var categorie = jQuery('#categorie');
 
     // Récupère l'ID de la catégorie

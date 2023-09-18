@@ -99,7 +99,7 @@
     <div class="img-article-similaire">
         <?php 
         $args = array(
-            'post_type' => 'photo',
+            'post_type' => 'galerie',
             'posts_per_page' => 2,
             'post__not_in'   => array( get_the_ID() ),
         );

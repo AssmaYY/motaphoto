@@ -16,6 +16,11 @@ function motaphoto_scripts()
 
 }
 add_action('wp_enqueue_scripts', 'motaphoto_scripts');
+function enregistrer_scripts_ajax() {
+
+  wp_localize_script( 'ajax-scripts', 'ajax_params', array( 'ajax_url' => admin_url( 'admin-ajax.php' ) ) );
+}
+add_action( 'wp_enqueue_scripts', 'enregistrer_scripts_ajax' );
 
 // aJOUT DU MENU PRINCIPAL//
 function register_menus() {
@@ -46,7 +51,33 @@ add_theme_support( 'title-tag' );
       while($ajaxposts->have_posts()) : $ajaxposts->the_post();
 
     
-   $response .= get_template_part('template-part/content', 'galerie-post');
+      $response .= '
+<div class="galerie-post">
+    <article>';
+if (get_post_type() === 'galerie') {
+    $response .= '
+        <div class="image-galerie">
+            <a class="img-galerie" href="' . get_permalink() . '">' . get_the_post_thumbnail() . '</a>
+        </div>
+        <div class="image-contenu">
+            <i class="icon-plein-ecran fa-solid fa-expand"></i>
+            <a class="" href="' . get_permalink() . '"><i class="icon-oeil fa-regular fa-eye"></i></a>
+            <p class="contenu-ref">' . get_field('reference') . '</p>
+            <p class="contenu-categorie">' . get_field('categorie') . '</p>
+        </div>';
+}
+$response .= '
+    </article>
+</div>';
+
+
+
+
+
+
+
+
+
          
     endwhile;
       $output = ob_get_contents();
