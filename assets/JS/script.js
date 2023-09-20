@@ -3,6 +3,7 @@
 const modal = document.getElementById("modal");
 const contactMenu = document.getElementById("menu-item-15"); 
 const contactPost = document.querySelector(".btn-contact");
+const contactBurger = document.getElementById("contact-burger");
 
 
 contactMenu.onclick = function(event){
@@ -19,7 +20,29 @@ if (contactPost !== null) {
           modal.style.display = 'block';
         }
       }
+      if (contactBurger !== null) {
+        contactBurger.onclick = function(event){
+          event.preventDefault();
+          modal.style.display = 'block';
+        }
+}}
+// MENU BURGER
+
+var sidenavBurger = document.getElementById("myMenuBurger");
+var openMenuBurger = document.getElementById("toggle")
+
+openMenuBurger.onclick = openBurger;
+
+function openBurger(){
+  document.body.style.overflow = 'hidden';
+  sidenavBurger.classList.add("active");
 }
+
+function closeBurger() {
+  document.body.style.overflow = 'auto';
+  sidenavBurger.classList.remove("active");
+}
+
 
 // RECUPERER REFERENCE FORMULAIRE POST
 

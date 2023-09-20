@@ -36,68 +36,40 @@ add_theme_support( 'title-tag' );
 
 // CHARGER PLUS
 
-  function weichie_load_more() {
-    $ajaxposts = new WP_Query([
-      'post_type' => 'galerie',
-      'posts_per_page' => 6,
-      'paged' => $_POST['paged'],
-    ]);
-  
-    $response = '';
-    $max_pages = $ajaxposts->max_num_pages;
-  
-    if($ajaxposts->have_posts()) {
-      ob_start();
-      while($ajaxposts->have_posts()) : $ajaxposts->the_post();
+function weichie_load_more() {
+  $ajaxposts = new WP_Query([
+    'post_type' => 'galerie',
+    'posts_per_page' => 6,
+    'paged' => $_POST['paged'],
+  ]);
 
-    
-      $response .= '
-<div class="galerie-post">
-    <article>';
-if (get_post_type() === 'galerie') {
-    $response .= '
-        <div class="image-galerie">
-            <a class="img-galerie" href="' . get_permalink() . '">' . get_the_post_thumbnail() . '</a>
-        </div>
-        <div class="image-contenu">
-            <i class="icon-plein-ecran fa-solid fa-expand"></i>
-            <a class="" href="' . get_permalink() . '"><i class="icon-oeil fa-regular fa-eye"></i></a>
-            <p class="contenu-ref">' . get_field('reference') . '</p>
-            <p class="contenu-categorie">' . get_field('categorie') . '</p>
-        </div>';
-}
-$response .= '
-    </article>
-</div>';
+  $response = '';
+  $max_pages = $ajaxposts->max_num_pages;
 
-
-
-
-
-
-
-
-
-         
+  if($ajaxposts->have_posts()) {
+    ob_start();
+    while($ajaxposts->have_posts()) : $ajaxposts->the_post();
+    $response .= get_template_part( '/templates-parts/galerie-photos' );
     endwhile;
-      $output = ob_get_contents();
-      ob_end_clean();
-    } 
-    else {
-      $response = '';
-    }
-  
-    $result = [
-      'max' => $max_pages,
-      'html' => $output,
-    ];
-  
-    echo json_encode($result);
-    exit;
+    $output = ob_get_contents();
+    ob_end_clean();
+  } 
+  else {
+    $response = '';
   }
 
-  add_action('wp_ajax_weichie_load_more', 'weichie_load_more');
-  add_action('wp_ajax_nopriv_weichie_load_more', 'weichie_load_more');
+  $result = [
+    'max' => $max_pages,
+    'html' => $output,
+  ];
+
+  echo json_encode($result);
+  exit;
+}
+
+add_action('wp_ajax_weichie_load_more', 'weichie_load_more');
+add_action('wp_ajax_nopriv_weichie_load_more', 'weichie_load_more');
+
 
 // FILTRE
 
