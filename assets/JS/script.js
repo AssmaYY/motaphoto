@@ -1,31 +1,4 @@
-// MODALE DE CONTACT//
 
-const modal = document.getElementById("modal");
-const contactMenu = document.getElementById("menu-item-15"); 
-const contactPost = document.querySelector(".btn-contact");
-const contactBurger = document.getElementById("contact-burger");
-
-
-contactMenu.onclick = function(event){
-    modal.style.display = 'block';
-    event.preventDefault();
-}
-
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-if (contactPost !== null) {
-        contactPost.onclick = function(){
-          modal.style.display = 'block';
-        }
-      }
-      if (contactBurger !== null) {
-        contactBurger.onclick = function(event){
-          event.preventDefault();
-          modal.style.display = 'block';
-        }
-}}
 // MENU BURGER
 
 var sidenavBurger = document.getElementById("myMenuBurger");
@@ -44,75 +17,40 @@ function closeBurger() {
 }
 
 
-// RECUPERER REFERENCE FORMULAIRE POST
+// // RECUPERER REFERENCE FORMULAIRE POST
 
 
 
- // Étape 1 : Récupérer l'élément du DOM avec la classe "ref"
- const champRef = document.getElementById('ref');
+//  // Étape 1 : Récupérer l'élément du DOM avec la classe "ref"
+//  const champRef = document.getElementById('ref');
 
- if (champRef !== null) {
-   // Étape 2 : Récupérer la valeur du champ ACF
-   const contenuTextuel = champRef.value;
+//  if (champRef !== null) {
+//    // Étape 2 : Récupérer la valeur du champ ACF
+//    const contenuTextuel = champRef.value;
  
-   // Étape 3 : Utiliser la valeur comme nécessaire
-   console.log(contenuTextuel);
- }
+//    // Étape 3 : Utiliser la valeur comme nécessaire
+//    console.log(contenuTextuel);
+//  }
 
-// SURVOL NEXT-PREV SINGLE-PHOTO//
-
-// Sélection des flèches .prev et .next
-const prevArrow = document.querySelector('.prev');
-const nextArrow = document.querySelector('.next');
-
-// Sélection des images .image-prev et .image-next
-const imagePrev = document.querySelector('.image-prev');
-const imageNext = document.querySelector('.image-next');
-
-if (nextArrow !== null) {
-  nextArrow.addEventListener('mouseenter', () => {
-    imageNext.style.opacity = '1';
-    imageNext.style.visibility = 'visible';
-  });
-
-  nextArrow.addEventListener('mouseleave', () => {
-    imageNext.style.opacity = '0';
-    imageNext.style.visibility = 'hidden';
-  });
-}
-
-if (prevArrow !== null) {
-  // Ajout des écouteurs d'événements pour le survol des flèches
-  prevArrow.addEventListener('mouseenter', () => {
-    imagePrev.style.opacity = '1';
-    imagePrev.style.visibility = 'visible';
-  });
-
-  prevArrow.addEventListener('mouseleave', () => {
-    imagePrev.style.opacity = '0';
-    imagePrev.style.visibility = 'hidden';
-  });
-}
 // CHARGER PLUS 
 
-let currentPage = 1;
-jQuery('#btn-charger-plus').on('click', function() {
-  currentPage++; 
+// let currentPage = 1;
+// jQuery('#btn-charger-plus').on('click', function() {
+//   currentPage++; 
 
-  jQuery.ajax({
-    type: 'POST',
-    url: 'wp-admin/admin-ajax.php',
-    dataType: 'json',
-    data: {
-      action: 'weichie_load_more',
-      paged: currentPage,
-    },
-    success: function (res) {
-      jQuery('.galerie').append(res.html);
-    }
-  });
-});
-
+//   // jQuery.ajax({
+//   //   type: 'POST',
+//   //   url: 'wp-admin/admin-ajax.php',
+//   //   dataType: 'json',
+//   //   data: {
+//   //     action: 'weichie_load_more',
+//   //     paged: currentPage,
+//   //   },
+//   //   success: function (res) {
+//   //     jQuery('.galerie').append(res.html);
+//   //   }
+//   // });
+// });
 
 // FILTRES
 
@@ -128,10 +66,21 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
+
+  let currentPage = 1;
+  let pageActuelle = 1;
+  jQuery('#btn-charger-plus').on('click', function() {
+    pageActuelle++; 
+
+    ajaxRequest(true);
+  });
+
+
+
   // Fonction pour effectuer une requête AJAX et mettre à jour la galerie de photos
   function ajaxRequest(chargerPlus) {
 
-    // Sélectionne l'élément avec l'ID 'categorie'
+    // Sélectionne l'élément avec l'ID 'categories'
     var categorie = jQuery('#categorie');
 
     // Récupère l'ID de la catégorie
@@ -356,3 +305,65 @@ function afficherAlerte(){
   });
 }
 
+// SURVOL NEXT-PREV SINGLE
+
+// Sélection des flèches .prev et .next
+const prevArrow = document.querySelector('.prev');
+const nextArrow = document.querySelector('.next');
+
+// Sélection des images .image-prev et .image-next
+const imagePrev = document.querySelector('.image-prev');
+const imageNext = document.querySelector('.image-next');
+
+if (nextArrow !== null) {
+  nextArrow.addEventListener('mouseenter', () => {
+    imageNext.style.opacity = '1';
+    imageNext.style.visibility = 'visible';
+  });
+
+  nextArrow.addEventListener('mouseleave', () => {
+    imageNext.style.opacity = '0';
+    imageNext.style.visibility = 'hidden';
+  });
+}
+
+if (prevArrow !== null) {
+  // Ajout des écouteurs d'événements pour le survol des flèches
+  prevArrow.addEventListener('mouseenter', () => {
+    imagePrev.style.opacity = '1';
+    imagePrev.style.visibility = 'visible';
+  });
+
+  prevArrow.addEventListener('mouseleave', () => {
+    imagePrev.style.opacity = '0';
+    imagePrev.style.visibility = 'hidden';
+  });
+}
+// MODALE DE CONTACT//
+
+const modal = document.getElementById("modal");
+const contactMenu = document.getElementById("menu-item-15"); 
+const contactPost = document.querySelector(".btn-contact");
+const contactBurger = document.getElementById("contact-burger");
+
+
+contactMenu.onclick = function(event){
+    modal.style.display = 'block';
+    event.preventDefault();
+}
+
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+if (contactPost !== null) {
+        contactPost.onclick = function(){
+          modal.style.display = 'block';
+        }
+      }
+      if (contactBurger !== null) {
+        contactBurger.onclick = function(event){
+          event.preventDefault();
+          modal.style.display = 'block';
+        }
+}}

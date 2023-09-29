@@ -22,11 +22,12 @@
     );
     ?>
 <!-- Section des Filtres -->
+<!-- Section des Filtres -->
 <section id="home-filtre" class="filtre">
     <div class="filtre-cat-form">
         <!-- Filtre catégorie -->
         <form id="filter-cat" class="js-filter-form">
-            <label for="categorie" class="letters-transform "></label>
+            <label for="categorie" class="letters-transform">Catégories</label>
             <select name="categories" id="categorie" class="filters_text">
                 <option value="">Catégories</option>
                 <?php
@@ -41,7 +42,7 @@
         </form>
         <!-- Filtre format -->
         <form id="filter-formats">
-            <label for="format" class="letters-transform"></label>
+            <label for="format" class="letters-transform">Formats</label>
             <select name="format" id="format" class="filters_text">
                 <option value="">Formats</option>
                 <?php
@@ -53,14 +54,13 @@
                     }
                 } ?>
             </select>
-
         </form>
     </div>
     <!-- Filtre tri -->
     <div class="filtre-dates">
         <form id="filter-date">
             <div class="filtre-tri">
-                <label for="sort-by" class="letters-transform"></label>
+                <label for="sort-dates" class="letters-transform">Trier par</label>
                 <select name="sort" id="sort-dates" class="filters_text">
                     <option value="">Trier par</option>
                     <option value="DESC">Nouveautés</option>
@@ -70,6 +70,7 @@
         </form>
     </div>
 </section>
+
 
 <!-- Div contenant ma galerie photo -->
 
@@ -97,7 +98,7 @@
             <!-- Div contenant les éléments au survol -->
             <div class="image-contenu">
                 <i class="icon-plein-ecran fa-solid fa-expand"></i>
-                <a class="" href="<?php the_permalink(); ?>"><i class="icon-oeil fa-regular fa-eye"></a></i>
+                <a href="<?php the_permalink(); ?>"><i class="icon-oeil fa-regular fa-eye"></a></i>
                 <p class="contenu-ref"><?php the_field('reference');?></p>
                 <p class="contenu-categorie"><?php echo get_the_term_list(get_the_ID(), 'categorie', '', ', '); ?></p>
             </div>
@@ -117,7 +118,7 @@
 <!-- Bouton charger plus -->
 
 <div class="charger-plus">
-  <a href="#!" class="btn" id="btn-charger-plus">Charger plus</a>
+  <a href="#!" class="btn" id="btn-charger-plus" data-paged="1">Charger plus</a>
 </div>
 
 <?php get_footer(); ?>

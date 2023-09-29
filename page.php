@@ -1,20 +1,10 @@
-<?php get_header();
-?>
+<?php get_header(); ?>
 
-	<main id="primary" class="site-main">
+<div class="bloc-page page">
+    <h1><?= the_title(); ?></h1>
+    <div class="page__contenu">
+        <?= the_content(); ?>
+    </div>
+</div>
 
-		<?php
-		while ( have_posts() ) :
-			the_post();
-
-			// get_template_part( 'templates-parts/content', 'page' );
-
-			
-		endwhile; // End of the loop.
-		?>
-
-	</main><!-- #main -->
-
-<?php
-
-get_footer();
+<?php get_footer(); ?>

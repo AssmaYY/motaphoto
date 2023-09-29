@@ -7,16 +7,20 @@
                 <!-- info de la photo -->
                 <div class="infos">
                     <h1><?php the_title(); ?></h1>
+                    <p><?php echo get_field_object('reference')['label']; ?> :
+                    <?php the_field('reference'); ?></p>
                     <p><?php echo get_taxonomy('categorie')->labels->name; ?> :
                     <?php echo get_the_term_list(get_the_ID(), 'categorie', '', ', '); ?></p>
     <p><?php echo get_taxonomy('format')->labels->name; ?> :
         <?php echo get_the_term_list(get_the_ID(), 'format', '', ', '); ?></p>
-        <p><?php echo get_field_object('reference')['label']; ?> :
-                    <?php the_field('reference'); ?></p>
+        <p><?php echo get_field_object('type')['label']; ?> :
+                    <?php the_field('type'); ?></p>
+        
+        <p>ANNEE : <?php echo get_the_date('Y', get_the_ID()); ?></p>
+        
  
                    
-                    <p><?php echo get_field_object('type')['label']; ?> :
-                    <?php the_field('type'); ?></p>
+                    
                     
                 </div>
                 <!-- Div contenant la photo -->
@@ -24,6 +28,10 @@
                     <!-- Div contenant mon image -->
                     <div class="single-similaire">
                         <?php the_post_thumbnail(); ?>
+                    </div>
+                     <!-- Div contenant les éléments au survol -->
+                     <div class="single-image-contenu">
+                        <i class="icon-plein-ecran fa-solid fa-expand"></i>
                     </div>
                     
                 </div>

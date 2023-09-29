@@ -12,7 +12,7 @@
   <div class="nav-wrapper">
     <nav class="lienBurger">
       <a href="<?php echo home_url( '/' ); ?>">Accueil</a><br>
-      <a href="<?php echo get_site_url(); ?>">A propos</a><br>
+      <a href="http://localhost:10028/a-propos/">A propos</a><br>
       <a id="contact-burger" href="">Contact</a><br>
     </nav>
   </div>

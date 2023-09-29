@@ -30,8 +30,11 @@ body{
 #site-navigation{
 	display: flex;
 	justify-content: space-around;
-	margin-bottom: 30px;
+	/* margin-bottom: 30px; */
 	margin-top: 30px;
+		height: 50px;
+		
+		box-shadow: 0 10px 10px 0 #F8F8F8;
 }
 
 #menu-menu{
@@ -50,7 +53,7 @@ a {
     text-decoration: none;
     color: black;
 }
-/* MENU DU FOOTER */
+/* FOOTER */
 .menu-menu-pied-de-page-container {
     display: flex;
 	justify-content: space-around;
@@ -88,9 +91,18 @@ a {
 	transform: translate(-50%, -50%);
 	background-color: white;
 	border: solid 3px black;
-    width: 37%;
+    width: 46%;
 }
-/* PAGE SINGLE-PHOTO */
+.modal-header{
+	margin-top: 30px;
+    width: 150%;
+}
+.wpforms-field{
+	padding: 10px 0 !important;
+}
+
+/* PAGE SINGLE-GALERIE */
+
 .galerie-single-post{
 	display: flex;
 	width: 100%;
@@ -98,7 +110,7 @@ a {
 }
 
 .infos{
-	/* width: 50%; */
+	width: 50%;
 	display: flex;
 	flex-direction: column;
 	justify-content: end;
@@ -143,10 +155,9 @@ a {
 
 .img-post img{
 	object-fit: contain;
-	width: 75%;
+	width: 100%;
 	display: flex;
 	height: auto;
-    margin-left: 320px;
 }
 
 .info-next-prev{
@@ -191,7 +202,7 @@ a {
 }
 
 .img-arrow img{
-	/* opacity: 0; */
+	opacity: 0;
     visibility: hidden;
     transition: opacity 0.3s ease, visibility 0.3s ease;
 	object-fit: contain;
@@ -245,6 +256,7 @@ a {
 	margin-top: 50px;
 	margin-bottom: 50px;
 }
+
 
 /* CHAMP REFERENCE */
 #acf-champ-reference{
@@ -318,6 +330,8 @@ select{
 #categorie option:hover{
 	background-color: #E00000;
 }
+
+
 
 /* GALERIE */
 
@@ -402,6 +416,7 @@ article{
 	width: 564px;
 	height: 495px;
 }
+
 
 /* LIGHTBOX */
 
@@ -545,6 +560,7 @@ article{
 	top: 0;
 	transform: scale(1);
 }
+
 .lienBurger{
 	display: flex;
 	flex-direction: column;
@@ -593,7 +609,6 @@ article{
 	display: block;
 	transition: transform 400ms cubic-bezier(0.23, 1, 0.32, 1);
 }
-
 .nav {
 	position: fixed;
 	width: 100%;
@@ -628,6 +643,8 @@ nav a:hover:before {
 }
 /* RESPONSIVE */
 
+/* Responsive */
+
 @media screen and (max-width: 850px) {
 
 	/* Nav + menu burger */
@@ -636,7 +653,9 @@ nav a:hover:before {
 		width: 100vw;
 	}
 
-	
+	.nav ul{
+		top: 30px;
+	}
 
 	.hamburger{
 		display: block;
@@ -737,11 +756,10 @@ nav a:hover:before {
 		opacity: 0;
 	}
 
-	/* Footer */
-
-	#menu-menu-pied-de-page{
-		flex-direction: column;
-		align-items: center;
-	}
 }
+/* PAGES VIE PRIVEE ET DROITS RESERVES */
 
+.bloc-page {
+    font-family: 'Space Mono' ;
+    font-size: 21px;
+}
