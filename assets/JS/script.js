@@ -17,40 +17,7 @@ function closeBurger() {
 }
 
 
-// // RECUPERER REFERENCE FORMULAIRE POST
 
-
-
-//  // Étape 1 : Récupérer l'élément du DOM avec la classe "ref"
-//  const champRef = document.getElementById('ref');
-
-//  if (champRef !== null) {
-//    // Étape 2 : Récupérer la valeur du champ ACF
-//    const contenuTextuel = champRef.value;
- 
-//    // Étape 3 : Utiliser la valeur comme nécessaire
-//    console.log(contenuTextuel);
-//  }
-
-// CHARGER PLUS 
-
-// let currentPage = 1;
-// jQuery('#btn-charger-plus').on('click', function() {
-//   currentPage++; 
-
-//   // jQuery.ajax({
-//   //   type: 'POST',
-//   //   url: 'wp-admin/admin-ajax.php',
-//   //   dataType: 'json',
-//   //   data: {
-//   //     action: 'weichie_load_more',
-//   //     paged: currentPage,
-//   //   },
-//   //   success: function (res) {
-//   //     jQuery('.galerie').append(res.html);
-//   //   }
-//   // });
-// });
 
 // FILTRES
 
@@ -367,3 +334,17 @@ if (contactPost !== null) {
           modal.style.display = 'block';
         }
 }}
+// RECUPERER REFERENCE FORMULAIRE POST
+
+// Étape 1 : Récupérer l'élément du DOM avec la classe "ref"
+document.addEventListener('DOMContentLoaded', function(){
+  
+    const paragraph = document.querySelector('#wpforms-22-field_3');
+    const inputReference = document.querySelector("input.infos-reference");    
+    console.log(paragraph)
+    if (paragraph !== null && inputReference !== null) {
+
+      paragraph.value = inputReference.value;
+    }
+  });
+  

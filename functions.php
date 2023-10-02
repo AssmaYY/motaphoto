@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 // Liaisons de fichiers CSS et JS
 
@@ -8,35 +8,37 @@ function motaphoto_scripts()
   wp_enqueue_style('motaphoto_scripts', get_template_directory_uri() . '/style.css', array(), '1.0', 'all');
 
   // Déclarer jQuery
-  wp_enqueue_script('jquery' );
-    
-  // Déclarer le JS
-  wp_enqueue_script('script', get_template_directory_uri() . '/assets/JS/script.js', array( 'jquery' ), '1.0', true);
-  wp_enqueue_script('lightbox', get_template_directory_uri() . '/assets/JS/lightbox.js', array( 'jquery' ), '1.0', true);
+  wp_enqueue_script('jquery');
 
+  // Déclarer le JS
+  wp_enqueue_script('script', get_template_directory_uri() . '/assets/JS/script.js', array('jquery'), '1.0', true);
+  wp_enqueue_script('lightbox', get_template_directory_uri() . '/assets/JS/lightbox.js', array('jquery'), '1.0', true);
 }
 add_action('wp_enqueue_scripts', 'motaphoto_scripts');
-function enregistrer_scripts_ajax() {
+function enregistrer_scripts_ajax()
+{
 
-  wp_localize_script( 'ajax-scripts', 'ajax_params', array( 'ajax_url' => admin_url( 'admin-ajax.php' ) ) );
+  wp_localize_script('ajax-scripts', 'ajax_params', array('ajax_url' => admin_url('admin-ajax.php')));
 }
-add_action( 'wp_enqueue_scripts', 'enregistrer_scripts_ajax' );
+add_action('wp_enqueue_scripts', 'enregistrer_scripts_ajax');
 
 // aJOUT DU MENU PRINCIPAL//
-function register_menus() {
-  register_nav_menu( 'main-menu', __( 'Menu principal', 'text-domain' ) );
-  register_nav_menu( 'footer', __( 'Pied de page', 'text-domain' ) );
+function register_menus()
+{
+  register_nav_menu('main-menu', __('Menu principal', 'text-domain'));
+  register_nav_menu('footer', __('Pied de page', 'text-domain'));
 }
-add_action( 'after_setup_theme', 'register_menus' );
+add_action('after_setup_theme', 'register_menus');
 // Ajouter la prise en charge des images mises en avant
-add_theme_support( 'post-thumbnails' );
+add_theme_support('post-thumbnails');
 
 // Ajouter automatiquement le titre du site dans l'en-tête du site
-add_theme_support( 'title-tag' );
+add_theme_support('title-tag');
 
 // CHARGER PLUS
 
-function weichie_load_more() {
+function weichie_load_more()
+{
   $ajaxposts = new WP_Query([
     'post_type' => 'galerie',
     'posts_per_page' => 6,
@@ -46,15 +48,14 @@ function weichie_load_more() {
   $response = '';
   $max_pages = $ajaxposts->max_num_pages;
 
-  if($ajaxposts->have_posts()) {
+  if ($ajaxposts->have_posts()) {
     ob_start();
-    while($ajaxposts->have_posts()) : $ajaxposts->the_post();
-    $response .= get_template_part( '/templates-parts/galerie-photos' );
+    while ($ajaxposts->have_posts()) : $ajaxposts->the_post();
+      $response .= get_template_part('/templates-parts/galerie-photos');
     endwhile;
     $output = ob_get_contents();
     ob_end_clean();
-  } 
-  else {
+  } else {
     $response = '';
   }
 
@@ -76,7 +77,8 @@ add_action('wp_ajax_nopriv_weichie_load_more', 'weichie_load_more');
 add_action('wp_ajax_my_filter', 'my_filter_function'); // Utilisez 'wp_ajax' pour les utilisateurs connectés
 add_action('wp_ajax_nopriv_my_filter', 'my_filter_function'); // Utilisez 'wp_ajax_nopriv' pour les utilisateurs non connectés
 
-function my_filter_function() {
+function my_filter_function()
+{
   if (isset($_GET['category'])) {
     global $wpdb;
     $category_filter = sanitize_text_field($_GET['category']);
@@ -100,22 +102,22 @@ function my_filter_function() {
         echo '<h2>' . get_the_title() . '</h2>';
       }
       wp_reset_postdata();
-      } 
-      else {
+    } else {
     }
     die();
   }
 }
 
 // Fonction qui va effectuer la requête AJAX pour filtrer les résultats
-function filter() {
+function filter()
+{
 
-  if($_POST['categorieSelection']==""){
-    $_POST['categorieSelection']="all";
+  if ($_POST['categorieSelection'] == "") {
+    $_POST['categorieSelection'] = "all";
   }
 
-  if($_POST['formatSelection']==""){
-    $_POST['formatSelection']="all";
+  if ($_POST['formatSelection'] == "") {
+    $_POST['formatSelection'] = "all";
   }
 
   // Crée une nouvelle requête WP_Query en fonction des paramètres reçus par la requête AJAX
@@ -131,26 +133,25 @@ function filter() {
       'relation' => 'AND', // Relation entre les clauses taxonomiques (ET)
       // Si la catégorie n'est pas "all", ajoute une clause de taxonomie pour la catégorie
       $_POST['categorieSelection'] != "all" ?
-      array(
-        'taxonomy' => $_POST['categorieTaxonomie'], // Taxonomie pour la catégorie
-        'field' => 'slug', // Comparaison basée sur le slug
-        'terms' => $_POST['categorieSelection'], // Valeur sélectionnée pour la catégorie
-      )
-      : '',
+        array(
+          'taxonomy' => $_POST['categorieTaxonomie'], // Taxonomie pour la catégorie
+          'field' => 'slug', // Comparaison basée sur le slug
+          'terms' => $_POST['categorieSelection'], // Valeur sélectionnée pour la catégorie
+        )
+        : '',
       // Si le format n'est pas "all", ajoute une clause de taxonomie pour le format
       $_POST['formatSelection'] != "all" ?
-      array(
-        'taxonomy' => $_POST['formatTaxonomie'], // Taxonomie pour le format
-        'field' => 'slug', // Comparaison basée sur le slug
-        'terms' => $_POST['formatSelection'], // Valeur sélectionnée pour le format
-      )
-      : '',
+        array(
+          'taxonomy' => $_POST['formatTaxonomie'], // Taxonomie pour le format
+          'field' => 'slug', // Comparaison basée sur le slug
+          'terms' => $_POST['formatSelection'], // Valeur sélectionnée pour le format
+        )
+        : '',
     )
   ));
 
   // Appelle la fonction 'afficherImages' avec la requête AJAX et un booléen 'true'
   afficherImages($requeteAjax, true);
-
 }
 
 
@@ -160,9 +161,10 @@ add_action('wp_ajax_nopriv_filter', 'filter');
 // Ajoute l'action 'wp_ajax_filter' pour les utilisateurs connectés
 add_action('wp_ajax_filter', 'filter');
 
-function afficherImages($galerie, $exit) {
+function afficherImages($galerie, $exit)
+{
 
-  if($galerie->have_posts()) {
+  if ($galerie->have_posts()) {
     while ($galerie->have_posts()) { ?>
       <?php $galerie->the_post(); ?>
       <div class="galerie-post">
@@ -179,15 +181,14 @@ function afficherImages($galerie, $exit) {
             <p class="contenu-categorie"><?php the_field('categorie'); ?></p>
           </div>
         </article>
-      </div>        
-      <?php
+      </div>
+<?php
     }
+  } else {
   }
-  else {
-  }
-  
+
   wp_reset_postdata();
   if ($exit) {
-    exit(); 
+    exit();
   }
 }

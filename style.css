@@ -16,15 +16,15 @@ body{
 
 @font-face {
 	font-family: 'Poppins Light';
-	src: url('assets/fonts/Poppins-Regular.ttf') format('truetype'),
-		 url('assets/fonts/Poppins-Light.ttf') format('truetype'),
+	src: url('assets/fonts/Poppins-Regular.ttf') format('truetype');
+		 url('assets/fonts/Poppins-Light.ttf') format('truetype');
 		 url('assets/fonts/Poppins-Medium.ttf') format('truetype');
 	
 }
 
 @font-face {
 	font-family: 'Space Mono';
-	src:  url('assets/fonts/SpaceMono-Regular.ttf') format('truetype'),
+	src:  url('assets/fonts/SpaceMono-Regular.ttf') format('truetype');
 		  url('assets/fonts/SpaceMono-Bold.ttf') format('truetype');
 }
 #site-navigation{
@@ -98,9 +98,31 @@ a {
     width: 150%;
 }
 .wpforms-field{
-	padding: 10px 0 !important;
+	padding: 6px 0 !important;
 }
-
+.wpforms-field-container{
+	background-color: white;
+	font-family: 'Poppins Light';
+	text-transform: uppercase;
+	border: solid;
+	}
+#wpforms-submit-22{
+	background-color: #D8D8D8;
+	width: 300px;
+	height: 50px;
+	font-family: 'space mono';
+	border: none;
+	cursor: pointer;
+	margin-left: 13px;
+}
+#wpforms-22-field_3{
+	font-family: 'Poppins Light';
+	text-transform: uppercase;
+}
+input{
+	border: solid 1px;
+	border-radius: 5px;
+}
 /* PAGE SINGLE-GALERIE */
 
 .galerie-single-post{
@@ -170,7 +192,7 @@ a {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	font-family: 'poppins';
+	font-family: 'Poppins Light';
 	border-bottom: solid 1px;
 }
 
@@ -674,6 +696,7 @@ nav a:hover:before {
 		overflow: scroll;
 		height: 86%;
 	}
+	
 
 	/* Titre header */
 	.text-header{

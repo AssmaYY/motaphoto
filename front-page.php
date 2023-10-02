@@ -1,27 +1,25 @@
 <?php get_header(); ?>
 
-<!-- Section des filtres -->
-
 <?php
-    $terms_pic_category = get_terms(array(
-        'taxonomy' => 'categorie',
-        'hide_empty' => true,
-    ));
+$terms_pic_category = get_terms(array(
+    'taxonomy' => 'categorie',
+    'hide_empty' => true,
+));
 
-    $terms_pic_formats = get_terms(array(
-        'taxonomy' => 'format',
-        'hide_empty' => true,
-    ));
+$terms_pic_formats = get_terms(array(
+    'taxonomy' => 'format',
+    'hide_empty' => true,
+));
 
-    $args = array(
-        'post_type' => 'galerie',
-        'orderby' => 'date',
-        'order' => 'ASC',
-        'posts_per_page' => 6,
-        'paged' => 1,
-    );
-    ?>
-<!-- Section des Filtres -->
+$args = array(
+    'post_type' => 'galerie',
+    'orderby' => 'date',
+    'order' => 'ASC',
+    'posts_per_page' => 6,
+    'paged' => 1,
+);
+?>
+
 <!-- Section des Filtres -->
 <section id="home-filtre" class="filtre">
     <div class="filtre-cat-form">
@@ -82,34 +80,11 @@
         'posts_per_page' => 6,
         'paged' => 1,
     ]);
-    
+
     if ($galeries->have_posts()) :
     ?>
         <?php while ($galeries->have_posts()) : $galeries->the_post(); ?>
-        <div class="galerie-post">
-    <article>
-        <?php if (get_post_type() === 'galerie') : ?>
-
-            <!-- Div contenant mon image -->
-            <div class="image-galerie">
-                <a class="img-galerie" href="<?php the_permalink(); ?>"><?php the_post_thumbnail(); ?></a>
-            </div>
-
-            <!-- Div contenant les éléments au survol -->
-            <div class="image-contenu">
-                <i class="icon-plein-ecran fa-solid fa-expand"></i>
-                <a href="<?php the_permalink(); ?>"><i class="icon-oeil fa-regular fa-eye"></a></i>
-                <p class="contenu-ref"><?php the_field('reference');?></p>
-                <p class="contenu-categorie"><?php echo get_the_term_list(get_the_ID(), 'categorie', '', ', '); ?></p>
-            </div>
-
-        <?php endif; ?>
-    </article>
-</div>
-    
-
-           
-        
+            <?php get_template_part('/templates-parts/galerie-photos'); ?>
         <?php endwhile; ?>
     <?php endif; ?>
     <?php wp_reset_postdata(); ?>
@@ -118,7 +93,7 @@
 <!-- Bouton charger plus -->
 
 <div class="charger-plus">
-  <a href="#!" class="btn" id="btn-charger-plus" data-paged="1">Charger plus</a>
+    <a href="#!" class="btn" id="btn-charger-plus" data-paged="1">Charger plus</a>
 </div>
 
 <?php get_footer(); ?>
