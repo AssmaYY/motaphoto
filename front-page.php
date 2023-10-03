@@ -1,24 +1,26 @@
 <?php get_header(); ?>
 
+<!-- Section des filtres -->
+
 <?php
-$terms_pic_category = get_terms(array(
-    'taxonomy' => 'categorie',
-    'hide_empty' => true,
-));
+    $terms_pic_category = get_terms(array(
+        'taxonomy' => 'categorie',
+        'hide_empty' => true,
+    ));
 
-$terms_pic_formats = get_terms(array(
-    'taxonomy' => 'format',
-    'hide_empty' => true,
-));
+    $terms_pic_formats = get_terms(array(
+        'taxonomy' => 'format',
+        'hide_empty' => true,
+    ));
 
-$args = array(
-    'post_type' => 'galerie',
-    'orderby' => 'date',
-    'order' => 'ASC',
-    'posts_per_page' => 6,
-    'paged' => 1,
-);
-?>
+    $args = array(
+        'post_type' => 'galerie',
+        'orderby' => 'date',
+        'order' => 'ASC',
+        'posts_per_page' => 6,
+        'paged' => 1,
+    );
+    ?>
 
 <!-- Section des Filtres -->
 <section id="home-filtre" class="filtre">
@@ -80,11 +82,11 @@ $args = array(
         'posts_per_page' => 6,
         'paged' => 1,
     ]);
-
+    
     if ($galeries->have_posts()) :
     ?>
         <?php while ($galeries->have_posts()) : $galeries->the_post(); ?>
-            <?php get_template_part('/templates-parts/galerie-photos'); ?>
+        <?php get_template_part('/templates-parts/galerie-photos'); ?>
         <?php endwhile; ?>
     <?php endif; ?>
     <?php wp_reset_postdata(); ?>
@@ -93,7 +95,7 @@ $args = array(
 <!-- Bouton charger plus -->
 
 <div class="charger-plus">
-    <a href="#!" class="btn" id="btn-charger-plus" data-paged="1">Charger plus</a>
+  <a href="#!" class="btn" id="btn-charger-plus" data-paged="1">Charger plus</a>
 </div>
 
 <?php get_footer(); ?>

@@ -1,23 +1,23 @@
 // LIGHTBOX
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function() {
   const lightbox = document.getElementById("lightbox");
   const lightboxImage = lightbox.querySelector(".img-lightbox img");
   const lightboxClose = document.querySelector(".lightbox-close");
-
+    
   let iconsEcran = document.querySelectorAll(".icon-plein-ecran");
 
   // Trouver l'élément avec la classe .lightbox-ref et .lightbox-categorie
   let lightboxRefElement = document.querySelector(".lightbox-ref");
-  let lightboxCatElement = document.querySelector(".lightbox-categorie");
+  let lightboxCatElement = document.querySelector(".lightbox-categorie")
 
-  let srcValue = "";
-  let refValue = "";
-  let catValue = "";
+  let srcValue ="";
+  let refValue ="";
+  let catValue ="";
 
   // Fonction à exécuter lorsque n'importe quelle icône est cliquée
   function afficherAlerte(event) {
-    lightbox.style.display = "block";
+    lightbox.style.display = 'block';
 
     // Récupérer la valeur de l'attribut 'rel' de l'icône cliquée
     let iconClicked = event.target;
@@ -26,19 +26,18 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log(parentImageGalerie);
 
     // Trouver l'élément img à l'intérieur de l'élément parent
-    let imageElement = parentImageGalerie.querySelector("img");
+    let  imageElement = parentImageGalerie.querySelector("img");
     srcValue = imageElement.getAttribute("src");
     console.log("Valeur de rel :", relValue);
     console.log("Valeur du src ;", srcValue);
 
     // Trouver l'élément à l'intérieur de l'élément parent
     let contenuRefElement = parentImageGalerie.querySelector(".contenu-ref");
-    let contenuCatElement =
-      parentImageGalerie.querySelector(".contenu-categorie");
+    let contenuCatElement = parentImageGalerie.querySelector(".contenu-categorie");
 
     // Récupérer le contenu textuel de l'élément .contenu-ref et .contenu-categorie
     // Vérifier si le corps du document a la classe "home"
-    if (document.body.classList.contains("home")) {
+    if (document.body.classList.contains('home')) {
       refValue = contenuRefElement.textContent;
       catValue = contenuCatElement.textContent;
     } else {
@@ -53,40 +52,40 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // Ajout d'un gestionnaire d'événement pour le clic à chaque icône
-  iconsEcran.forEach((icon) => {
+  iconsEcran.forEach(icon => {
     icon.addEventListener("click", afficherAlerte);
   });
 
   // Fermeture de la lightbox
-  lightboxClose.addEventListener("click", function () {
+  lightboxClose.addEventListener("click", function(){
     lightbox.style.display = "none";
   });
 
   // Précédent
   // Sélectionne l'élément du bouton précédent dans la lightbox
-  var lightboxPrev = document.querySelector(".lightbox-prev");
+  var lightboxPrev = document.querySelector('.lightbox-prev');
 
   // Permet d'afficher la flèche de gauche seulement dans la page d'accueil
-  if (document.body.classList.contains("home")) {
-    lightboxPrev.style.display = "block";
+  if (document.body.classList.contains('home')) {
+    lightboxPrev.style.display="block";
   } else {
-    lightboxPrev.style.display = "none";
+    lightboxPrev.style.display="none";
   }
 
   // Ajoute un écouteur d'événements pour le clic sur le bouton précédent
-  lightboxPrev.addEventListener("click", function () {
+  lightboxPrev.addEventListener('click', function() {
     // Trouve tous les conteneurs .galerie-post
-    var allGaleriePosts = document.querySelectorAll(".galerie-post");
-
+    var allGaleriePosts = document.querySelectorAll('.galerie-post');
+  
     // Trouve l'élément .galerie-post de l'image actuellement affichée
     var currentGaleriePost = null;
     for (var i = 0; i < allGaleriePosts.length; i++) {
       var galeriePost = allGaleriePosts[i];
-      var image = galeriePost.querySelector(".img-galerie img");
-      var imageSrc = image.getAttribute("src");
-      var imageRef = galeriePost.querySelector(".contenu-ref");
-      var imageCat = galeriePost.querySelector(".contenu-categorie");
-
+      var image = galeriePost.querySelector('.img-galerie img');
+      var imageSrc = image.getAttribute('src');
+      var imageRef = galeriePost.querySelector('.contenu-ref');
+      var imageCat = galeriePost.querySelector('.contenu-categorie');
+  
       // Vérifie si l'attribut 'src' de l'image correspond à la valeur de srcValue
       if (imageSrc === srcValue) {
         currentGaleriePost = galeriePost; // Définit l'élément galerie-post actuel
@@ -103,62 +102,63 @@ document.addEventListener("DOMContentLoaded", function () {
         break;
       }
     }
-
+  
     // Si nous avons trouvé l'élément .galerie-post actuel
     if (currentGaleriePost) {
       // Trouve l'élément .galerie-post précédent
       var prevGaleriePost = currentGaleriePost.previousElementSibling;
-
+  
       // Si l'élément précédent existe
       if (prevGaleriePost) {
         // Trouve l'image dans l'élément .galerie-post précédent
-        var prevImage = prevGaleriePost.querySelector(".img-galerie img");
-
+        var prevImage = prevGaleriePost.querySelector('.img-galerie img');
+  
         // Récupère la source de l'image précédente
-        var prevImageSrc = prevImage.getAttribute("src");
+        var prevImageSrc = prevImage.getAttribute('src');
 
         // Récupère la référence  et la catégorie de l'image précédente
-        var prevImageRef = prevGaleriePost.querySelector(".contenu-ref");
-        var prevImageCat = prevGaleriePost.querySelector(".contenu-categorie");
-
+        var prevImageRef = prevGaleriePost.querySelector('.contenu-ref');
+        var prevImageCat = prevGaleriePost.querySelector('.contenu-categorie');
+  
         // Met à jour la valeur de srcValue avec la source de l'image précédente
         srcValue = prevImageSrc;
 
         // Met à jour la valeur de refValue
         refValue = prevImageRef;
         catValue = prevImageCat;
-
+  
         // Met à jour la source de l'image et les infos dans la lightbox avec la nouvelle source
         lightboxImage.setAttribute("src", srcValue);
         lightboxRefElement.textContent = refValue.textContent;
         lightboxCatElement.textContent = catValue.textContent;
-      } else {
+      } 
+      else {
       }
     }
   });
-
+  
   // Suivant
-  var lightboxNext = document.querySelector(".lightbox-next");
+  var lightboxNext = document.querySelector('.lightbox-next');
 
   // Permet d'afficher la flèche de droite seulement dans la page d'accueil
-  if (document.body.classList.contains("home")) {
-    lightboxNext.style.display = "block";
+  if (document.body.classList.contains('home')) {
+    lightboxNext.style.display="block";
   } else {
-    lightboxNext.style.display = "none";
+    lightboxNext.style.display="none";
   }
-
-  lightboxNext.addEventListener("click", function () {
-    var allGaleriePosts = document.querySelectorAll(".galerie-post"); // Trouver tous les conteneurs galerie-post
-
+  
+  lightboxNext.addEventListener('click', function() {
+    var allGaleriePosts = document.querySelectorAll('.galerie-post'); // Trouver tous les conteneurs galerie-post
+  
     // Trouver l'élément .galerie-post de l'image actuellement affichée
     var currentGaleriePost = null;
     for (var i = 0; i < allGaleriePosts.length; i++) {
       var galeriePost = allGaleriePosts[i];
-      var image = galeriePost.querySelector(".img-galerie img");
-      var imageSrc = image.getAttribute("src");
-      var imageRef = galeriePost.querySelector(".contenu-ref");
-      var imageCat = galeriePost.querySelector(".contenu-categorie");
-
+      var image = galeriePost.querySelector('.img-galerie img');
+      var imageSrc = image.getAttribute('src');
+      var imageRef = galeriePost.querySelector('.contenu-ref')
+      var imageCat = galeriePost.querySelector('.contenu-categorie')
+  
       if (imageSrc === srcValue) {
         currentGaleriePost = galeriePost;
         break;
@@ -178,23 +178,24 @@ document.addEventListener("DOMContentLoaded", function () {
     // Si nous avons trouvé l'élément .galerie-post actuel
     if (currentGaleriePost) {
       var nextGaleriePost = currentGaleriePost.nextElementSibling; // Trouver l'élément suivant
-
+  
       if (nextGaleriePost) {
-        var nextImage = nextGaleriePost.querySelector(".img-galerie img"); // Trouver l'image suivante
-        var nextImageSrc = nextImage.getAttribute("src"); // Récupérer la source de l'image suivante
-        var nextImageRef = nextGaleriePost.querySelector(".contenu-ref");
-        var nextImageCat = nextGaleriePost.querySelector(".contenu-categorie");
-
+        var nextImage = nextGaleriePost.querySelector('.img-galerie img'); // Trouver l'image suivante
+        var nextImageSrc = nextImage.getAttribute('src'); // Récupérer la source de l'image suivante
+        var nextImageRef = nextGaleriePost.querySelector('.contenu-ref');
+        var nextImageCat = nextGaleriePost.querySelector('.contenu-categorie');
+  
         // Mettre à jour la valeur de srcValue avec la source de l'image suivante
         srcValue = nextImageSrc;
         refValue = nextImageRef;
         catValue = nextImageCat;
-
+  
         // Faire autre chose avec la nouvelle valeur de srcValue
         lightboxImage.setAttribute("src", srcValue);
         lightboxRefElement.textContent = refValue.textContent;
         lightboxCatElement.textContent = catValue.textContent;
-      } else {
+      } 
+      else {
       }
     }
   });
