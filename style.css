@@ -547,10 +547,11 @@ article{
 .hamburger {
 	display: none;
 	position: relative;
-	right: 0px;
-	margin-top: -17px;
+	left: 304px;
+	margin-top: -63px;
 	width: 30px;
 	z-index: 5;
+	margin-bottom: 17px;
 }
   
 .hamburger div {
@@ -579,7 +580,7 @@ article{
 }
 
 #toggle:checked + .hamburger + .menuBurger {
-	top: 0;
+	top: -7px;
 	transform: scale(1);
 }
 
@@ -600,7 +601,7 @@ article{
 	position: fixed;
 	z-index: 1;
 	top: 0;
-	background-color: #E00000;
+	background-color: #92928e;
 	transition: top 0.5s ease;
 	overflow: hidden;
 	margin-top: 80px;
@@ -674,7 +675,13 @@ nav a:hover:before {
 		right: auto;
 		width: 100vw;
 	}
-
+	/* .top-bun, .meat{
+		background-color: white!important;
+	} */
+#site-navigation img {
+	width: 183px;
+    margin-right: 77px;
+}
 	.nav ul{
 		top: 30px;
 	}
@@ -715,7 +722,7 @@ nav a:hover:before {
 	}
 
 	select{
-		width: 170px;
+		width: 164px;
 	}
 
 	/* Galerie */

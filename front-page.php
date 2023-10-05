@@ -1,6 +1,5 @@
 <?php get_header(); ?>
 
-<!-- Section des filtres -->
 
 <?php
     $terms_pic_category = get_terms(array(
@@ -21,8 +20,7 @@
         'paged' => 1,
     );
     ?>
-
-<!-- Section des Filtres -->
+<!-- Section Filtres -->
 <section id="home-filtre" class="filtre">
     <div class="filtre-cat-form">
         <!-- Filtre catégorie -->
@@ -72,7 +70,7 @@
 </section>
 
 
-<!-- Div contenant ma galerie photo -->
+<!-- conteneur le la galerie photo -->
 
 <div class="galerie">
 

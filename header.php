@@ -30,7 +30,7 @@
                 ]);
                 ?>
             </nav><!-- #site-navigation -->
-            <!-- Integration de mon template menu burger -->
+            <!-- Integration du menu burger -->
             <?php get_template_part('/templates-parts/menu-burger'); ?>
             <!-- Affichage de l'image du header -->
             <?php if (is_front_page()) : ?>

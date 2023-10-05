@@ -336,7 +336,7 @@ if (contactPost !== null) {
 }}
 // RECUPERER REFERENCE FORMULAIRE POST
 
-// Étape 1 : Récupérer l'élément du DOM avec la classe "ref"
+// Étape 1 : Récupérer l'élément du DOM avec l id wpfroms
 document.addEventListener('DOMContentLoaded', function(){
   
     const paragraph = document.querySelector('#wpforms-22-field_3');

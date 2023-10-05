@@ -20,12 +20,8 @@
 
                     <p>ANNEE : <?php echo get_the_date('Y', get_the_ID()); ?></p>
 
-
-
-
-
                 </div>
-                <!-- Div contenant la photo -->
+                <!-- conteneur de la photo -->
                 <div class="img-post">
                     <!-- Div contenant mon image -->
                     <div class="single-similaire">
@@ -60,7 +56,7 @@
                             // Récupère le lien vers le post précédent
                             $prevLink = get_permalink($prevPost);
                         ?>
-                            <!-- Div contenant flèche de gauche -->
+                            <!-- conteneur flèche gauche -->
                             <div class="prev">
                                 <a href="<?php echo $prevLink; ?>">
                                     <i class="fas fa-arrow-left"></i>
@@ -69,7 +65,7 @@
 
                             <!-- Si aucun post précédent n'existe -->
                         <?php } else { ?>
-                            <!-- Affiche une flèche gauche -->
+                            <!-- conteneur flèche gauche -->
                             <i class="fas fa-arrow-left"></i>
                         <?php } ?>
 
@@ -80,7 +76,7 @@
                             // Récupère le lien vers le post suivant
                             $nextLink = get_permalink($nextPost);
                         ?>
-                            <!-- Div contenant ma flèche de droite -->
+                            <!-- conteneur flèche droite -->
                             <div class="next">
                                 <a href="<?php echo $nextLink; ?>">
                                     <!-- Affiche une flèche droite -->

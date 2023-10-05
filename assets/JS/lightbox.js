@@ -18,17 +18,13 @@ document.addEventListener("DOMContentLoaded", function() {
   // Fonction à exécuter lorsque n'importe quelle icône est cliquée
   function afficherAlerte(event) {
     lightbox.style.display = 'block';
-
-    // Récupérer la valeur de l'attribut 'rel' de l'icône cliquée
     let iconClicked = event.target;
-    let relValue = iconClicked.getAttribute("rel");
     let parentImageGalerie = event.target.parentElement.parentElement; // Remonter deux niveaux parents
     console.log(parentImageGalerie);
 
     // Trouver l'élément img à l'intérieur de l'élément parent
     let  imageElement = parentImageGalerie.querySelector("img");
     srcValue = imageElement.getAttribute("src");
-    console.log("Valeur de rel :", relValue);
     console.log("Valeur du src ;", srcValue);
 
     // Trouver l'élément à l'intérieur de l'élément parent
@@ -43,7 +39,6 @@ document.addEventListener("DOMContentLoaded", function() {
     } else {
     }
 
-    // Injecter la valeur de 'rel' dans l'attribut 'src' de l'image de la lightbox
     lightboxImage.setAttribute("src", srcValue);
 
     // Injecter les contenus textuel dans l'élément .lightbox-ref
